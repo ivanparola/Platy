@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Login(props) {
     return (
-        <View style={styles.container}>
-            <Text>My Login</Text>
-        </View >
+        <ScrollView>
+            <View style={styles.container}>
+                <Text>My Login</Text>
+            </View >
+        </ScrollView>
     );
 }
 
