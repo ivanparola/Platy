@@ -3,9 +3,11 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-nativ
 
 export default function Login(props) {
     return (
-        <View style={styles.container}>
-            <Text>My Login</Text>
-        </View >
+        <ScrollView>
+            <View style={styles.container}>
+                <Text>My Login</Text>
+            </View >
+        </ScrollView>
     );
 }
 

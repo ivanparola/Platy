@@ -4,9 +4,11 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Activi
 export default function Signup(props) {
 
     return (
-        <View style={styles.container}>
-            <Text>My Singup</Text>
-        </View >
+        <ScrollView>
+            <View style={styles.container}>
+                <Text>My Singup</Text>
+            </View >
+        </ScrollView>
     );
 }
 

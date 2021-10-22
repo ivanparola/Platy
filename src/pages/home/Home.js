@@ -1,18 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Home(props) {
     return (
-        <View style={styles.blockHome}>
-            <Text>My Home</Text>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => props.root.navigate('Login')}>Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => props.root.navigate('Signup')}>Signup</Text>
-            </TouchableOpacity>
-        </View >
+        <ScrollView>
+            <View style={styles.blockHome}>
+                <Text>My Home</Text>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText} onPress={() => props.root.navigate('Login')}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText} onPress={() => props.root.navigate('Signup')}>Signup</Text>
+                </TouchableOpacity>
+            </View >
+        </ScrollView>
     );
 }
 
