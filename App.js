@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeApp from './src/pages/home/Home';
 import LoginApp from './src/pages/login/Login';
 import SignupApp from './src/pages/signup/Singup';
+import InitApp from './src/pages/init/Init';
 
 function Home({ navigation }) {
   return (
@@ -36,14 +37,24 @@ function Signup({ navigation }) {
   );
 }
 
+function Init({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <InitApp root={navigation} />
+    </View>
+  );
+}
+
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Signup" component={Signup} /> */}
+      <Stack.Screen name="Init" component={Init} />
     </Stack.Navigator>
   );
 }
