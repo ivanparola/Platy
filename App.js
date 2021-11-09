@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeApp from './src/pages/home/Home';
 import LoginApp from './src/pages/login/Login';
 import SignupApp from './src/pages/signup/Singup';
+import InitApp from './src/pages/init/Init';
 
 function Home({ navigation }) {
   return (
@@ -36,6 +37,15 @@ function Signup({ navigation }) {
   );
 }
 
+function Init({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <InitApp root={navigation} />
+    </View>
+  );
+}
+
 const Stack = createStackNavigator();
 
 function MyStack() {
@@ -44,6 +54,8 @@ function MyStack() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
+
+      <Stack.Screen name="Init" component={Init} />
     </Stack.Navigator>
   );
 }
@@ -58,9 +70,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flexGrow: 1,
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  signUpTextLogin: {
+    flexGrow: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    flexDirection: 'row',
+  },
+  signUpText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  signUpButton: {
+    color: '#006ea8',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 3,
+  }
 });
