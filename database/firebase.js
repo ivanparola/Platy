@@ -1,10 +1,7 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import firebase from 'firebase';
+import 'firebase/firestore';
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
+var firebaseConfig = {
     apiKey: "AIzaSyDM5owvoUEJH5gkAVOVT0bI3XpzlSzQQus",
     authDomain: "platy-dcdc8.firebaseapp.com",
     databaseURL: "https://platy-dcdc8-default-rtdb.firebaseio.com",
@@ -15,4 +12,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+
+const db = firebase.firestore();
+
+export default {
+    firebase,
+    db,
+}

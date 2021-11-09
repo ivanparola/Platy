@@ -51,9 +51,10 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} /> */}
+      <Stack.Screen name="Signup" component={Signup} />
+
       <Stack.Screen name="Init" component={Init} />
     </Stack.Navigator>
   );
@@ -69,9 +70,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flexGrow: 1,
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  signUpTextLogin: {
+    flexGrow: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    flexDirection: 'row',
+  },
+  signUpText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  signUpButton: {
+    color: '#006ea8',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 3,
+  }
 });
