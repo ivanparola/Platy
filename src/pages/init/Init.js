@@ -1,11 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Init(props) {
     return (
         <ScrollView>
-            <View style={styles.blockHome}>
+            <View style={styles.container}>
                 <Text>My Init</Text>
             </View >
         </ScrollView>
