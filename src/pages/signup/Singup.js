@@ -56,21 +56,19 @@ export default function Signup(props) {
             <View style={styles.blockLogin}>
                 <ActivityIndicator size="large" color="#006ea8" animating={state.loader} />
 
-                <View>
-                    <TextInput placeholder='First Name' onChangeText={(value => handleChangeText('firstName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                    <TextInput placeholder='Last Name' onChangeText={(value => handleChangeText('lastName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                    <TextInput placeholder='Email' onChangeText={(value => handleChangeText('email', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                    <TextInput placeholder='Password' onChangeText={(value => handleChangeText('password', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
-                    <TextInput placeholder='Confirm Password' onChangeText={(value => handleChangeText('passwordConfirm', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
+                <TextInput placeholder='First Name' onChangeText={(value => handleChangeText('firstName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                <TextInput placeholder='Last Name' onChangeText={(value => handleChangeText('lastName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                <TextInput placeholder='Email' onChangeText={(value => handleChangeText('email', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                <TextInput placeholder='Password' onChangeText={(value => handleChangeText('password', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
+                <TextInput placeholder='Confirm Password' onChangeText={(value => handleChangeText('passwordConfirm', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
 
-                    <TouchableOpacity style={styles.buttonLogin}>
-                        <Text style={styles.buttonText} onPress={() => createNewUser()}>Signup</Text>
-                    </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonLogin}>
+                    <Text style={styles.buttonText} onPress={() => createNewUser()}>Signup</Text>
+                </TouchableOpacity>
 
-                    <View style={styles.signUpTextLogin}>
-                        <Text style={styles.signUpText}>Already have an account?</Text>
-                        <Text style={styles.signUpButton} onPress={() => props.root.navigate('Login')}>Sign in</Text>
-                    </View>
+                <View style={styles.signUpTextLogin}>
+                    <Text style={styles.signUpText}>Already have an account?</Text>
+                    <Text style={styles.signUpButton} onPress={() => props.root.navigate('Login')}>Sign in</Text>
                 </View>
 
 
@@ -125,7 +123,7 @@ const styles = StyleSheet.create({
         color: '#006ea8',
         fontSize: 16,
         fontWeight: 'bold',
-        marginLeft: 10,
+        marginLeft: 3,
     },
     text: {
         color: 'white',

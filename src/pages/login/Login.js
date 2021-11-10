@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 export default function Login(props) {
     return (
         <View style={styles.blockLogin}>
+            <Image style={styles.logoUser} source={require('../../../assets/img/logo/user-icons.gif')} />
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholder='Email' placeholderTextColor='#000000' />
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholder='Password' secureTextEntry={true} placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
@@ -64,6 +65,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginLeft: 3,
+    },
+    logoUser: {
+        width: 50,
+        height: 50,
+        borderRadius: 150,
     }
 
 });
