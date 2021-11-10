@@ -1,21 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import AppLoading from 'expo-app-loading';
+// import { useFonts, Allan_400Regular } from '@expo-google-fonts/inter';
+import {
+    useFonts,
+    Pacifico_400Regular
+} from '@expo-google-fonts/pacifico';
 
 export default function Home(props) {
-    return (
-        <ScrollView>
+
+    let [fontsLoaded] = useFonts({
+        Pacifico_400Regular
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+        return (
             <View style={styles.blockHome}>
-                <Text>My Home</Text>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText} onPress={() => props.root.navigate('Login')}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText} onPress={() => props.root.navigate('Signup')}>Signup</Text>
-                </TouchableOpacity>
+                <Image style={styles.imgLogo} source={require('../../../assets/img/logo/1-1.png')} />
+                <Text style={styles.title}>Platy</Text>
+                <View style={styles.blockButton}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText} onPress={() => props.root.navigate('Login')}>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText} onPress={() => props.root.navigate('Signup')}>Signup</Text>
+                    </TouchableOpacity>
+                </View >
             </View >
-        </ScrollView>
-    );
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -28,7 +44,7 @@ const styles = StyleSheet.create({
     blockHome: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 100
+        marginTop: 75
     },
     button: {
         width: 300,
@@ -42,5 +58,22 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#ffffff',
         textAlign: 'center',
+    },
+    imgLogo: {
+        width: 200,
+        height: 150,
+    },
+    title: {
+        fontFamily: 'Pacifico_400Regular',
+        fontSize: 40,
+        color: 'white',
+        fontSize: 60,
+        marginTop: 10
+    },
+    blockButton: {
+        flexGrow: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        paddingVertical: 16,
     },
 });
