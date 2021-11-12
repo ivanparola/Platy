@@ -41,7 +41,7 @@ export default function Signup(props) {
                     handleChangeText("loader", false);
                 }, 1000)
 
-                props.root.navigate('Init');
+                props.root.navigate('Step1');
 
             } catch (error) {
                 console.log(error);

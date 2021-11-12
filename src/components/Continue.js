@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
-export default function Box(props) {
+export default function Continue(props) {
     return (
         <ScrollView>
             <View style={styles.container}>
-            <TextInput style={styles.box} underlineColorAndroid='rgba(0,0,0,0)' placeholder='Email' placeholderTextColor='#000000' />
+                <TouchableOpacity style={styles.buttonContinue}>
+                    <Text style={styles.buttonText} onPress={() => createNewUser()}>Signup</Text>
+                </TouchableOpacity>
             </View >
         </ScrollView>
     );
@@ -18,14 +20,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    box: {
+    buttonContinue: {
         width: 300,
-        height: 50,
-        backgroundColor: '#fcffff',
+        backgroundColor: '#006ea8',
         borderRadius: 25,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#000000',
         marginVertical: 10,
+        paddingVertical: 16,
     },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#ffffff',
+        textAlign: 'center',
+    }
 });
