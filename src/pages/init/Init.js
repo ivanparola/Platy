@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Init(props) {
+    console.log(props);
     return (
         <ScrollView>
             <View style={styles.container}>
