@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
-export default function Step1(props) {
+export default function Step2(props) {
 
 
     return (
         <View style={styles.container}>
-            <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step1/Ilustracion.png')} />
-            <Image style={styles.imgText} source={require('../../../assets/img/signup/step1/Texto.png')} />
-
-            <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => login()}>Continuar</Text>
+            <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step2/Ilustracion.png')} />
+            <Image style={styles.imgText} source={require('../../../assets/img/signup/step2/Texto.png')} />
+            <TouchableOpacity style={styles.buttonLogin} onPress={() => props.root.navigate('Step3')}>
+                <Image style={styles.imgButton} source={require('../../../assets/img/signup/step2/Boton.png')} />
             </TouchableOpacity>
         </View >
     );
 }
 
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imgIlustracion: {
-        width: 200,
-        height: 150,
+        width: 50,
+        height: 50,
     },
     imgText: {
-        width: 200,
-        height: 150,
+        width: 50,
+        height: 50,
     },
     buttonText: {
         fontSize: 16,
@@ -39,10 +39,7 @@ const styles = StyleSheet.create({
     },
     buttonLogin: {
         width: 300,
-        backgroundColor: '#006ea8',
-        borderRadius: 25,
-        marginVertical: 10,
-        paddingVertical: 16,
+        height: 100,
     },
     imgButton: {
         width: 200,
