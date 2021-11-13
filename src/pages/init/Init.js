@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function Init(props) {
-    console.log(props);
+
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text>My Init</Text>
+                <Text>Codigo de cliente: {props.id}</Text>
+                <Text>Email de cliente: {props.email}</Text>
             </View >
         </ScrollView>
     );
