@@ -8,12 +8,9 @@ export default function Step1(props) {
         <View style={styles.container}>
             <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step1/Ilustracion.png')} />
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step1/Texto.png')} />
-            <TouchableOpacity style={styles.buttonLogin} onPress={() => props.root.navigate('Step2')}>
-            <Image source={require('../../../assets/img/signup/step1/Boton.png')}/>
-            </TouchableOpacity>
 
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => login()}>Login</Text>
+                <Text style={styles.buttonText} onPress={() => login()}>Continuar</Text>
             </TouchableOpacity>
         </View >
     );
@@ -46,6 +43,10 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginVertical: 10,
         paddingVertical: 16,
+    },
+    imgButton: {
+        width: 200,
+        height: 150,
     }
 
 });

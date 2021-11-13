@@ -5,15 +5,13 @@ export default function Step2(props) {
 
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <View style={styles.container}>
             <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step2/Ilustracion.png')} />
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step2/Texto.png')} />
-            <TouchableOpacity onPress={() => props.root.navigate('Step3')}>
-            <Image source={require('../../../assets/img/signup/step2/Boton.png')}/>
+            <TouchableOpacity style={styles.buttonLogin} onPress={() => props.root.navigate('Step3')}>
+                <Image style={styles.imgButton} source={require('../../../assets/img/signup/step2/Boton.png')} />
             </TouchableOpacity>
-            </View >
-        </ScrollView>
+        </View >
     );
 }
 
@@ -26,18 +24,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imgIlustracion: {
-        width: 200,
-        height: 150,
+        width: 50,
+        height: 50,
     },
     imgText: {
-        width: 200,
-        height: 150,
+        width: 50,
+        height: 50,
     },
     buttonText: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#ffffff',
         textAlign: 'center',
+    },
+    buttonLogin: {
+        width: 300,
+        height: 100,
+    },
+    imgButton: {
+        width: 200,
+        height: 150,
     }
 
 });

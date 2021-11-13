@@ -1,19 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 export default function Step3(props) {
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <View style={styles.container}>
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step3/Texto.png')} />
-            <ImageBackground source={require('../../../assets/img/signup/step3/Input.png')} resizeMode="cover" style={styles.inputBackground}>
-            <TextInput style={styles.inputIngreso}/>
+            <ImageBackground source={require('../../../assets/img/signup/step3/Input.png')} resizeMode="cover" style={styles.inputIngreso}>
+                <TextInput style={styles.inputIngreso} />
             </ImageBackground>
             <TouchableOpacity onPress={() => props.root.navigate('Step4')}>
-            <Image source={require('../../../assets/img/signup/step3/Boton.png')}/>
+                <Image source={require('../../../assets/img/signup/step3/Boton.png')} />
             </TouchableOpacity>
-            </View >
-        </ScrollView>
+        </View >
     );
 }
 

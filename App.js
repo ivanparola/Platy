@@ -66,7 +66,7 @@ function Step2({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <Step1App root={navigation} />
+      <Step2App root={navigation} />
     </View>
   );
 }
@@ -74,7 +74,7 @@ function Step3({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <Step1App root={navigation} />
+      <Step3App root={navigation} />
     </View>
   );
 }
@@ -82,7 +82,7 @@ function Step4({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <Step1App root={navigation} />
+      <Step4App root={navigation} />
     </View>
   );
 }
@@ -90,7 +90,7 @@ function Step5({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <Step1App root={navigation} />
+      <Step5App root={navigation} />
     </View>
   );
 }
@@ -98,7 +98,7 @@ function Step6({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <Step1App root={navigation} />
+      <Step6App root={navigation} />
     </View>
   );
 }
