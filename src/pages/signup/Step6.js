@@ -1,18 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+
 export default function Step6(props) {
 
-
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <View style={styles.container}>
             <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step6/Ilustracion.png')} />
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step6/Texto.png')} />
-            <TouchableOpacity onPress={() => props.root.navigate('Init')}>
-            <Image source={require('../../../assets/img/signup/step6/Boton.png')}/>
+            <TouchableOpacity style={styles.buttonLogin}>
+                <Text style={styles.buttonText} onPress={() => props.root.navigate('Init')}>INGRESAR</Text>
             </TouchableOpacity>
-            </View >
-        </ScrollView>
+        </View >
     );
 }
 
@@ -24,18 +22,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imgIlustracion: {
-        width: 200,
-        height: 150,
+        width: 400,
+        height: 400,
     },
     imgText: {
-        width: 200,
-        height: 150,
+        width: 400,
+        height: 200,
     },
     buttonText: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#ffffff',
         textAlign: 'center',
+    },
+    buttonLogin: {
+        width: 300,
+        backgroundColor: '#006ea8',
+        borderRadius: 25,
+        marginVertical: 10,
+        paddingVertical: 16,
+    },
+    imgButton: {
+        width: 200,
+        height: 150,
     }
 
 });
