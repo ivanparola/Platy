@@ -1,13 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 export default function Step3(props) {
+
+    const [state, setState] = useState({
+        ingreso: '',
+    })
+
+    const handleChangeText = (name, value) => {
+        setState({ ...state, [name]: value })
+    }
+
+    const addIngresos = async () => {
+        if (state.ingreso == "") {
+
+            alert('There is a blank field');
+
+        } else {
+
+            handleChangeText("loader", true);
+
+            try {
+
+                await firebase.db.collection('users').add({
+                    firstName: state.firstName,
+                    lastName: state.lastName,
+                    email: state.email,
+                    password: state.password
+                });
+
+                setTimeout(() => {
+                    handleChangeText("loader", false);
+                }, 1000)
+
+                props.root.navigate('Step1');
+
+            } catch (error) {
+                console.log(error);
+                alert(error)
+            }
+
+        }
+    }
 
     return (
         <View style={styles.container}>
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step3/Texto.png')} />
-            <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+            <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('ingreso', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step4')}>INGRESAR</Text>
+                <Text style={styles.buttonText} onPress={() => onPress={() => addIngresos()}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );
@@ -42,7 +82,7 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
     },
     inputLogin: {
-        width: 200,
+        width: 300,
         height: 50,
         backgroundColor: '#fcffff',
         borderRadius: 25,
@@ -50,6 +90,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#000000',
         marginVertical: 10,
+        borderBottomColor: '#006ea8',
+        borderBottomWidth: 1,
+        marginBottom: 50,
     },
 
 });
