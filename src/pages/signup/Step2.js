@@ -3,20 +3,18 @@ import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView 
 
 export default function Step2(props) {
 
-
     return (
         <View style={styles.container}>
             <Image style={styles.imgIlustracion} source={require('../../../assets/img/signup/step2/Ilustracion.png')} />
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step2/Texto.png')} />
-            <TouchableOpacity style={styles.buttonLogin} onPress={() => props.root.navigate('Step3')}>
-                <Image style={styles.imgButton} source={require('../../../assets/img/signup/step2/Boton.png')} />
+            <TouchableOpacity style={styles.buttonLogin}>
+                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step3')}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );
 }
 
 const styles = StyleSheet.create({
-
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -24,12 +22,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imgIlustracion: {
-        width: 50,
-        height: 50,
+        width: 400,
+        height: 400,
     },
     imgText: {
-        width: 50,
-        height: 50,
+        width: 400,
+        height: 200,
     },
     buttonText: {
         fontSize: 16,
@@ -39,7 +37,10 @@ const styles = StyleSheet.create({
     },
     buttonLogin: {
         width: 300,
-        height: 100,
+        backgroundColor: '#006ea8',
+        borderRadius: 25,
+        marginVertical: 10,
+        paddingVertical: 16,
     },
     imgButton: {
         width: 200,

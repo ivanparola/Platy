@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6fd621f2-d10b-44fa-ba15-b07ec52fb61a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Continue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/step/Box.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup/Step6.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup/Step6.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

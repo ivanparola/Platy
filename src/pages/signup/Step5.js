@@ -1,19 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 export default function Step5(props) {
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <View style={styles.container}>
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step5/Texto.png')} />
-            <ImageBackground source={require('../../../assets/img/signup/step5/Input.png')} resizeMode="cover" style={styles.inputBackground}>
-            <TextInput style={styles.inputIngreso}/>
-            </ImageBackground>
-            <TouchableOpacity onPress={() => props.root.navigate('Step6')}>
-            <Image source={require('../../../assets/img/signup/step5/Boton.png')}/>
+            <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+            <TouchableOpacity style={styles.buttonLogin}>
+                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step6')}>INGRESAR</Text>
             </TouchableOpacity>
-            </View >
-        </ScrollView>
+        </View >
     );
 }
 
@@ -25,12 +21,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imgIlustracion: {
-        width: 200,
-        height: 150,
+        width: 400,
+        height: 400,
     },
     imgText: {
-        width: 200,
-        height: 150,
+        width: 400,
+        height: 200,
     },
     buttonText: {
         fontSize: 16,
@@ -38,8 +34,15 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         textAlign: 'center',
     },
-    inputIngreso: {
+    buttonLogin: {
         width: 300,
+        backgroundColor: '#006ea8',
+        borderRadius: 25,
+        marginVertical: 10,
+        paddingVertical: 16,
+    },
+    inputLogin: {
+        width: 200,
         height: 50,
         backgroundColor: '#fcffff',
         borderRadius: 25,
