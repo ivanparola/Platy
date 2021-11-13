@@ -48,11 +48,22 @@ export default function Login(props) {
                 var email = state.email;
                 var password = state.password;
                 var emailAux = "";
+                var exist = false;
                 while (i < users.length && emailAux == "") {
                     if (email == users[i].email && password == users[i].password) {
-                        props.root.navigate('Init');
+                        exist = true;
+                        props.root.navigate('Init', {
+                            data: {
+                                id: users[i].id,
+                                email: users[i].email,
+                            }
+                        });
                     }
                     i++;
+                }
+
+                if (!exist) {
+                    alert('Usuario inexistente');
                 }
             }
         }
