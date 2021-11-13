@@ -34,7 +34,9 @@ export default function Signup(props) {
                     firstName: state.firstName,
                     lastName: state.lastName,
                     email: state.email,
-                    password: state.password
+                    password: state.password,
+                    ingreso: 0,
+                    objetivo: 0,
                 });
 
                 setTimeout(() => {

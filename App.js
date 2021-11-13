@@ -44,11 +44,14 @@ function Signup({ navigation }) {
   );
 }
 
-function Init({ navigation }) {
+function Init({ route, navigation }) {
+
+  const { id, email } = route.params.data;
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <InitApp root={navigation} />
+      <InitApp root={navigation} id={id} email={email} />
     </View>
   );
 }
@@ -108,9 +111,9 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} /> */}
+      <Stack.Screen name="Signup" component={Signup} />
 
       <Stack.Screen name="Step1" component={Step1} />
       <Stack.Screen name="Step2" component={Step2} />
