@@ -7,8 +7,12 @@ require('firebase/auth')
 export default function Login(props) {
 
     const [state, setState] = useState({
-        email: '',
-        password: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        ingreso: 0,
+        objetivo: 0,
     });
 
     const handleChangeText = (name, value) => {
@@ -24,12 +28,16 @@ export default function Login(props) {
         firebase.db.collection('users').onSnapshot(querySnapshot => {
             querySnapshot.docs.forEach(doc => {
 
-                const { email, password } = doc.data();
+                const { firstName, lastName, email, password, ingreso, objetivo } = doc.data();
 
                 users.push({
                     id: doc.id,
+                    firstName,
+                    lastName,
                     email,
-                    password
+                    password,
+                    ingreso,
+                    objetivo
                 });
             });
             setUsers(users);
@@ -56,6 +64,12 @@ export default function Login(props) {
                             data: {
                                 id: users[i].id,
                                 email: users[i].email,
+                                firstName: users[i].firstName,
+                                lastName: users[i].lastName,
+                                email: users[i].email,
+                                password: users[i].password,
+                                ingreso: users[i].ingreso,
+                                objetivo: users[i].objetivo,
                             }
                         });
                     }
@@ -71,7 +85,10 @@ export default function Login(props) {
 
     return (
         <View style={styles.blockLogin}>
-            <Image style={styles.logoUser} source={require('../../../assets/img/logo/user-icons.gif')} />
+            <View style={styles.blockImgLogin}>
+                <Image style={styles.logoUser} source={require('../../../assets/img/logo/user-icons.gif')} />
+            </View>
+
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' onChangeText={(value => handleChangeText('email', value))} placeholder='Email' placeholderTextColor='#000000' />
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' onChangeText={(value => handleChangeText('password', value))} placeholder='Password' secureTextEntry={true} placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
@@ -134,9 +151,19 @@ const styles = StyleSheet.create({
         marginLeft: 3,
     },
     logoUser: {
-        width: 50,
-        height: 50,
-        borderRadius: 150,
+        width: 150,
+        height: 150,
+        marginLeft: 0,
+        marginVertical: 0,
+    },
+    blockImgLogin: {
+        backgroundColor: 'white',
+        width: 158,
+        height: 158,
+        borderRadius: 150 / 2,
+        overflow: "hidden",
+        borderWidth: 5,
+        borderColor: "#006ea8",
+        marginVertical: 80
     }
-
 });

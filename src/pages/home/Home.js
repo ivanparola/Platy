@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
 import AppLoading from 'expo-app-loading';
-// import { useFonts, Allan_400Regular } from '@expo-google-fonts/inter';
+
 import {
     useFonts,
     Pacifico_400Regular
