@@ -46,12 +46,12 @@ function Signup({ navigation }) {
 
 function Init({ route, navigation }) {
 
-  const { id, email } = route.params.data;
+  const { id, firstName, lastName, email, password, ingreso, objetivo } = route.params.data;
 
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <InitApp root={navigation} id={id} email={email} />
+      <InitApp root={navigation} id={id} email={email} firstName={firstName} lastName={lastName} email={email} password={password} ingreso={ingreso} objetivo={objetivo} />
     </View>
   );
 }

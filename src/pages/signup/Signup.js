@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 
 import firebase from '../../../database/firebase';
 
@@ -58,6 +58,8 @@ export default function Signup(props) {
             <View style={styles.blockLogin}>
                 <ActivityIndicator size="large" color="#006ea8" animating={state.loader} />
 
+                <Image style={styles.imgLogo} source={require('../../../assets/img/logo/1-1.png')} />
+
                 <TextInput placeholder='First Name' onChangeText={(value => handleChangeText('firstName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
                 <TextInput placeholder='Last Name' onChangeText={(value => handleChangeText('lastName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
                 <TextInput placeholder='Email' onChangeText={(value => handleChangeText('email', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems: 'flex-end',
         justifyContent: 'center',
-        paddingVertical: 16,
+        paddingVertical: 35,
         flexDirection: 'row',
     },
     signUpText: {
@@ -134,5 +136,9 @@ const styles = StyleSheet.create({
     text2: {
         color: 'white',
     },
-
+    imgLogo: {
+        width: 150,
+        height: 100,
+        marginBottom: 40
+    },
 });
