@@ -47,7 +47,7 @@ export default function Step3(props) {
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step3/Texto.png')} />
             <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('ingreso', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => onPress={() => addIngresos()}>INGRESAR</Text>
+                <Text style={styles.buttonText} onPress={() => addIngresos()}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );
