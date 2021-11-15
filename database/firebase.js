@@ -1,6 +1,14 @@
-import firebase from 'firebase';
-import 'firebase/firestore';
+import firebase from "firebase/app"
+import "firebase/auth"
 
+
+
+import { initializeApp } from "firebase/app";
+import { auth, createUserWithEmailAndPassword } from 'firebase/auth';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDM5owvoUEJH5gkAVOVT0bI3XpzlSzQQus",
     authDomain: "platy-dcdc8.firebaseapp.com",
@@ -13,11 +21,9 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
+const authUser = firebase.auth()
+//const authUser = firebase.auth();
 
-const db = firebase.firestore();
-
-export default {
-    firebase,
-    db,
+export function signup1(email, password) {
+    return authUser.createUserWithEmailAndPassword(email, password);
 }
