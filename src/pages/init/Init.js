@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Image, Dimensions, StyleSheet } from 'react-native';
 import { collection, doc, setDoc, where, orderBy } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { Table, Row, Rows } from 'react-native-table-component';
 
 
 
@@ -47,7 +48,7 @@ export default function Init(props) {
 
 
     const q = query(collection(db, "transactions"), where("userId", "==", user.uid));
-    const transactionByUser = await getDocs(q);
+    const transactionByUser = getDocs(q);
 
     const data = {
         labels: ["January", "February", "March", "April", "May", "June"],
@@ -62,6 +63,16 @@ export default function Init(props) {
                     Math.random() * 100
                 ]
             }
+        ]
+    };
+
+    this.state = {
+        tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
+        tableData: [
+            ['1', '2', '3', '4'],
+            ['a', 'b', 'c', 'd'],
+            ['1', '2', '3', '456\n789'],
+            ['a', 'b', 'c', 'd']
         ]
     };
 
@@ -108,17 +119,10 @@ export default function Init(props) {
                         borderRadius: 16
                     }}
                 />
-                <TableView style={{ flex: 1 }} tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}>
-                    <Item>fecha</Item>
-                    <Item>monto</Item>
-                    <Item></Item>
-                    <Section canMove canEdit>
-                        {transactionByUser.map(a => (
-                            <Item>{a.date}</Item>
-                            <Item>{a.mount}</Item>
-                        ))}
-                    </Section>
-                </TableView>
+                <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                    <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
+                    <Rows data={state.tableData} textStyle={styles.text} />
+                </Table>
 
             </View >
         </ScrollView>
@@ -176,5 +180,12 @@ const styles = StyleSheet.create({
     graphStyle: {
         marginVertical: 8,
         borderRadius: 16
+    },
+    head: {
+        height: 40,
+        backgroundColor: '#f1f8ff'
+    },
+    text: {
+        margin: 6
     }
 });
