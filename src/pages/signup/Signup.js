@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 
-import firebase from '../../../database/firebase';
+//import firebase from '../../../database/firebase';
+import { signup1, useAuth } from '../../../database/firebase';
 
 export default function Signup(props) {
+
+    const [loading, setLoading] = useState(false);
+    const currentUser = useAuth();
 
     const [state, setState] = useState({
         firstName: '',
@@ -18,6 +22,17 @@ export default function Signup(props) {
         setState({ ...state, [name]: value })
     }
 
+    async function handleSignup() {
+        setLoading(true);
+        try {
+            await signup1(state.email, state.password);
+        } catch (error) {
+            console.log(error)
+            alert(error.message);
+        }
+        setLoading(false);
+    }
+
 
     const createNewUser = async () => {
         if (state.firstName == "" || state.lastName == "" || state.email == "" || state.password == "") {
@@ -29,15 +44,17 @@ export default function Signup(props) {
             handleChangeText("loader", true);
 
             try {
+                await signup1(state.email, state.password);
 
-                await firebase.db.collection('users').add({
-                    firstName: state.firstName,
-                    lastName: state.lastName,
-                    email: state.email,
-                    password: state.password,
-                    ingreso: 0,
-                    objetivo: 0,
-                });
+
+                // await firebase.db.collection('users').add({
+                //     firstName: state.firstName,
+                //     lastName: state.lastName,
+                //     email: state.email,
+                //     password: state.password,
+                //     ingreso: 0,
+                //     objetivo: 0,
+                // });
 
                 setTimeout(() => {
                     handleChangeText("loader", false);
@@ -46,39 +63,48 @@ export default function Signup(props) {
                 props.root.navigate('Step1');
 
             } catch (error) {
-                console.log(error);
-                alert(error)
+                alert(error.message);
+                props.root.push('Signup');
+
             }
 
         }
     }
 
-    return (
-        <ScrollView>
-            <View style={styles.blockLogin}>
-                <ActivityIndicator size="large" color="#006ea8" animating={state.loader} />
-
-                <Image style={styles.imgLogo} source={require('../../../assets/img/logo/1-1.png')} />
-
-                <TextInput placeholder='First Name' onChangeText={(value => handleChangeText('firstName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                <TextInput placeholder='Last Name' onChangeText={(value => handleChangeText('lastName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                <TextInput placeholder='Email' onChangeText={(value => handleChangeText('email', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
-                <TextInput placeholder='Password' onChangeText={(value => handleChangeText('password', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
-                <TextInput placeholder='Confirm Password' onChangeText={(value => handleChangeText('passwordConfirm', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
-
-                <TouchableOpacity style={styles.buttonLogin}>
-                    <Text style={styles.buttonText} onPress={() => createNewUser()}>Signup</Text>
-                </TouchableOpacity>
-
-                <View style={styles.signUpTextLogin}>
-                    <Text style={styles.signUpText}>Already have an account?</Text>
-                    <Text style={styles.signUpButton} onPress={() => props.root.navigate('Login')}>Sign in</Text>
-                </View>
 
 
-            </View >
-        </ScrollView>
-    );
+    if (!loading || currentUser == null) {
+        return (
+            <ScrollView>
+                <View style={styles.blockLogin}>
+                    <ActivityIndicator size="large" color="#006ea8" animating={state.loader} />
+
+                    <Image style={styles.imgLogo} source={require('../../../assets/img/logo/1-1.png')} />
+
+                    <TextInput placeholder='First Name' onChangeText={(value => handleChangeText('firstName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                    <TextInput placeholder='Last Name' onChangeText={(value => handleChangeText('lastName', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                    <TextInput placeholder='Email' onChangeText={(value => handleChangeText('email', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+                    <TextInput placeholder='Password' onChangeText={(value => handleChangeText('password', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
+                    <TextInput placeholder='Confirm Password' onChangeText={(value => handleChangeText('passwordConfirm', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true} placeholderTextColor='#000000' />
+
+                    <TouchableOpacity style={styles.buttonLogin}>
+                        <Text style={styles.buttonText} onPress={() => createNewUser()}>Signup</Text>
+                    </TouchableOpacity>
+
+                    <View style={styles.signUpTextLogin}>
+                        <Text style={styles.signUpText}>Already have an account?</Text>
+                        <Text style={styles.signUpButton} onPress={() => props.root.navigate('Login')}>Sign in</Text>
+                    </View>
+
+
+                </View >
+            </ScrollView>
+        );
+
+    } else {
+        props.root.navigate('Init');
+    }
+
 }
 
 const styles = StyleSheet.create({
