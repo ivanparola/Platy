@@ -1,10 +1,8 @@
+import React, { useEffect, useState } from "react";
 import firebase from "firebase/app"
 import "firebase/auth"
-
-
-
 import { initializeApp } from "firebase/app";
-import { auth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,4 +24,20 @@ const authUser = firebase.auth()
 
 export function signup1(email, password) {
     return authUser.createUserWithEmailAndPassword(email, password);
+}
+
+export function useAuth() {
+    const [currentUser, setCurrentUser] = useState();
+
+    useEffect(() => {
+
+        const unsub = firebase.auth().onAuthStateChanged((user) => {
+            setCurrentUser(user);
+        });
+
+
+        return unsub;
+    }, [])
+
+    return currentUser;
 }
