@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
+import { doc, setDoc } from "firebase/firestore";
+
 export default function Step3(props) {
 
     const [state, setState] = useState({
@@ -10,36 +12,18 @@ export default function Step3(props) {
         setState({ ...state, [name]: value })
     }
 
+    // const auth = getAuth();
+    // const user = auth.currentUser;
+
     const addIngresos = async () => {
-        if (state.ingreso == "") {
 
-            alert('There is a blank field');
+        // await setDoc(doc(db, "transactions"), {
+        //     date: new Date().getDate(),
+        //     mount: ingreso,
+        //     userId: user.uid,
+        //   });
 
-        } else {
-
-            handleChangeText("loader", true);
-
-            try {
-
-                await firebase.db.collection('users').add({
-                    firstName: state.firstName,
-                    lastName: state.lastName,
-                    email: state.email,
-                    password: state.password
-                });
-
-                setTimeout(() => {
-                    handleChangeText("loader", false);
-                }, 1000)
-
-                props.root.navigate('Step1');
-
-            } catch (error) {
-                console.log(error);
-                alert(error)
-            }
-
-        }
+         await props.root.navigate('Step3');
     }
 
     return (
@@ -47,7 +31,7 @@ export default function Step3(props) {
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step3/Texto.png')} />
             <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('ingreso', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => addIngresos()}>INGRESAR</Text>
+                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step4')}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );
