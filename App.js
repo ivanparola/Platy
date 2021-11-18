@@ -46,12 +46,12 @@ function Signup({ navigation }) {
 
 function Init({ route, navigation }) {
 
-  const { id, firstName, lastName, email, password, ingreso, objetivo } = route.params.data;
+  // const { id, firstName, lastName, email, password, ingreso, objetivo } = route.params.data;
 
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <InitApp root={navigation} id={id} email={email} firstName={firstName} lastName={lastName} email={email} password={password} ingreso={ingreso} objetivo={objetivo} />
+      <InitApp root={navigation} /*id={id} email={email} firstName={firstName} lastName={lastName} email={email} password={password} ingreso={ingreso} objetivo={objetivo}*/ />
     </View>
   );
 }
@@ -111,7 +111,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
 
@@ -120,7 +120,7 @@ function MyStack() {
       <Stack.Screen name="Step3" component={Step3} />
       <Stack.Screen name="Step4" component={Step4} />
       <Stack.Screen name="Step5" component={Step5} />
-      <Stack.Screen name="Step6" component={Step6} /> */}
+      <Stack.Screen name="Step6" component={Step6} />
 
       <Stack.Screen name="Init" component={Init} />
     </Stack.Navigator>
