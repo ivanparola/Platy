@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 
-import firebase from '../../../database/firebase';
+//import firebase from '../../../database/firebase';
+import { signup1, logout1, login, useAuth } from '../../../database/firebase';
 
 export default function Signup(props) {
+
+    const [loading, setLoading] = useState(false);
+    const currentUser = useAuth();
 
     const [state, setState] = useState({
         firstName: '',
@@ -18,6 +22,28 @@ export default function Signup(props) {
         setState({ ...state, [name]: value })
     }
 
+    async function handleSignup() {
+        setLoading(true);
+        try {
+            await signup1(state.email, state.password);
+        } catch (error) {
+            console.log(error)
+            alert(error.message);
+        }
+        setLoading(false);
+    }
+
+    async function handleLogout() {
+        setLoading(true);
+        try {
+            await logout1();
+        } catch (error) {
+            console.log(error)
+            alert(error.message);
+        }
+        setLoading(false);
+    }
+
 
     const createNewUser = async () => {
         if (state.firstName == "" || state.lastName == "" || state.email == "" || state.password == "") {
@@ -29,15 +55,17 @@ export default function Signup(props) {
             handleChangeText("loader", true);
 
             try {
+                await signup1(state.email, state.password);
 
-                await firebase.db.collection('users').add({
-                    firstName: state.firstName,
-                    lastName: state.lastName,
-                    email: state.email,
-                    password: state.password,
-                    ingreso: 0,
-                    objetivo: 0,
-                });
+
+                // await firebase.db.collection('users').add({
+                //     firstName: state.firstName,
+                //     lastName: state.lastName,
+                //     email: state.email,
+                //     password: state.password,
+                //     ingreso: 0,
+                //     objetivo: 0,
+                // });
 
                 setTimeout(() => {
                     handleChangeText("loader", false);
@@ -46,8 +74,9 @@ export default function Signup(props) {
                 props.root.navigate('Step1');
 
             } catch (error) {
-                console.log(error);
-                alert(error)
+                alert(error.message);
+                props.root.push('Signup');
+
             }
 
         }
@@ -79,6 +108,7 @@ export default function Signup(props) {
             </View >
         </ScrollView>
     );
+
 }
 
 const styles = StyleSheet.create({

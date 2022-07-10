@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
 
-import firebase from '../../../database/firebase';
-require('firebase/auth')
+// import firebase from '../../../database/firebase';
+// require('firebase/auth')
+import { signup1, logout1, login1, useAuth } from '../../../database/firebase';
 
 export default function Login(props) {
 
@@ -21,65 +22,83 @@ export default function Login(props) {
 
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const users = [];
+    //     const users = [];
 
-        firebase.db.collection('users').onSnapshot(querySnapshot => {
-            querySnapshot.docs.forEach(doc => {
+    //     firebase.db.collection('users').onSnapshot(querySnapshot => {
+    //         querySnapshot.docs.forEach(doc => {
 
-                const { firstName, lastName, email, password, ingreso, objetivo } = doc.data();
+    //             const { firstName, lastName, email, password, ingreso, objetivo } = doc.data();
 
-                users.push({
-                    id: doc.id,
-                    firstName,
-                    lastName,
-                    email,
-                    password,
-                    ingreso,
-                    objetivo
-                });
-            });
-            setUsers(users);
-        });
-    }, []);
+    //             users.push({
+    //                 id: doc.id,
+    //                 firstName,
+    //                 lastName,
+    //                 email,
+    //                 password,
+    //                 ingreso,
+    //                 objetivoprops
+    // }, []);
+
+    // async function handleLogin() {
+    //     try {
+    //         await login(state.email, state.password);
+    //     } catch (error) {
+    //         console.log(error)
+    //         alert(error.message);
+    //     }
+    // }
 
     const login = async () => {
-        if (state.email == "" || state.password == "") {
+        console.log(await login1(state.email, state.password));
+        // if (state.email == "" || state.password == "") {
 
-            alert('There is a blank field');
+        //     alert('There is a blank field');
 
-        } else {
+        // } else {
 
-            if (users) {
-                var i = 0;
-                var email = state.email;
-                var password = state.password;
-                var emailAux = "";
-                var exist = false;
-                while (i < users.length && emailAux == "") {
-                    if (email == users[i].email && password == users[i].password) {
-                        exist = true;
-                        props.root.navigate('Init', {
-                            data: {
-                                id: users[i].id,
-                                email: users[i].email,
-                                firstName: users[i].firstName,
-                                lastName: users[i].lastName,
-                                email: users[i].email,
-                                password: users[i].password,
-                                ingreso: users[i].ingreso,
-                                objetivo: users[i].objetivo,
-                            }
-                        });
-                    }
-                    i++;
-                }
+        //     if (users) {
+        //         var i = 0;
+        //         var email = state.email;
+        //         var password = state.password;
+        //         var emailAux = "";
+        //         var exist = false;
+        //         while (i < users.length && emailAux == "") {
+        //             if (email == users[i].email && password == users[i].password) {
+        //                 exist = true;
+        //                 props.root.navigate('Init', {
+        //                     data: {
+        //                         id: users[i].id,
+        //                         email: users[i].email,
+        //                         firstName: users[i].firstName,
+        //                         lastName: users[i].lastName,
+        //                         email: users[i].email,
+        //                         password: users[i].password,
+        //                         ingreso: users[i].ingreso,
+        //                         objetivo: users[i].objetivo,
+        //                     }
+        //                 });
+        //             }
+        //             i++;
+        //         }
 
-                if (!exist) {
-                    alert('Usuario inexistente');
-                }
-            }
+        //         if (!exist) {
+        //             alert('Usuario inexistente');
+        //         }
+        //     }
+        // }
+    }
+
+    async function handleLogin() {
+        try {
+            await login1(state.email, state.password).then((user) => {
+                console.log(user.user)
+                props.root.navigate('Init');
+            })
+        } catch (error) {
+            console.log(error)
+            alert(error.message);
         }
     }
 
@@ -92,7 +111,7 @@ export default function Login(props) {
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' onChangeText={(value => handleChangeText('email', value))} placeholder='Email' placeholderTextColor='#000000' />
             <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' onChangeText={(value => handleChangeText('password', value))} placeholder='Password' secureTextEntry={true} placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => login()}>Login</Text>
+                <Text style={styles.buttonText} onPress={() => handleLogin()}>Login</Text>
             </TouchableOpacity>
             <View style={styles.signUpTextLogin}>
                 <Text style={styles.signUpText}>Don't have an account yet?</Text>

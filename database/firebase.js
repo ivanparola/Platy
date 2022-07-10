@@ -1,6 +1,12 @@
-import firebase from 'firebase';
-import 'firebase/firestore';
+import React, { useEffect, useState } from "react";
+import firebase from "firebase/app"
+import "firebase/auth"
+import { initializeApp } from "firebase/app";
+import { auth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDM5owvoUEJH5gkAVOVT0bI3XpzlSzQQus",
     authDomain: "platy-dcdc8.firebaseapp.com",
@@ -13,11 +19,33 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
+const authUser = firebase.auth()
+//const authUser = firebase.auth();
 
-const db = firebase.firestore();
+export function signup1(email, password) {
+    return authUser.createUserWithEmailAndPassword(email, password);
+}
 
-export default {
-    firebase,
-    db,
+export function login1(email, password) {
+    return authUser.signInWithEmailAndPassword(email, password);
+}
+
+export function logout1() {
+    return signOut(authUser);
+}
+
+export function useAuth() {
+    const [currentUser, setCurrentUser] = useState();
+
+    useEffect(() => {
+
+        const unsub = firebase.auth().onAuthStateChanged((user) => {
+            setCurrentUser(user);
+        });
+
+
+        return unsub;
+    }, [])
+
+    return currentUser;
 }
