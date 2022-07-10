@@ -7,7 +7,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 // Pages
 import HomeApp from './src/pages/home/Home';
 import LoginApp from './src/pages/login/Login';
-import SignupApp from './src/pages/signup/Singup';
+import SignupApp from './src/pages/signup/Signup';
+import InitApp from './src/pages/init/Init';
+import Step1App from './src/pages/signup/Step1';
+import Step2App from './src/pages/signup/Step2';
+import Step3App from './src/pages/signup/Step3';
+import Step4App from './src/pages/signup/Step4';
+import Step5App from './src/pages/signup/Step5';
+import Step6App from './src/pages/signup/Step6';
+
 
 function Home({ navigation }) {
   return (
@@ -36,6 +44,68 @@ function Signup({ navigation }) {
   );
 }
 
+function Init({ route, navigation }) {
+
+  // const { id, firstName, lastName, email, password, ingreso, objetivo } = route.params.data;
+
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <InitApp root={navigation} /*id={id} email={email} firstName={firstName} lastName={lastName} email={email} password={password} ingreso={ingreso} objetivo={objetivo}*/ />
+    </View>
+  );
+}
+
+function Step1({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step1App root={navigation} />
+    </View>
+  );
+}
+
+function Step2({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step2App root={navigation} />
+    </View>
+  );
+}
+function Step3({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step3App root={navigation} />
+    </View>
+  );
+}
+function Step4({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step4App root={navigation} />
+    </View>
+  );
+}
+function Step5({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step5App root={navigation} />
+    </View>
+  );
+}
+function Step6({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <Step6App root={navigation} />
+    </View>
+  );
+}
+
 const Stack = createStackNavigator();
 
 function MyStack() {
@@ -44,6 +114,15 @@ function MyStack() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
+
+      <Stack.Screen name="Step1" component={Step1} />
+      <Stack.Screen name="Step2" component={Step2} />
+      <Stack.Screen name="Step3" component={Step3} />
+      <Stack.Screen name="Step4" component={Step4} />
+      <Stack.Screen name="Step5" component={Step5} />
+      <Stack.Screen name="Step6" component={Step6} />
+
+      <Stack.Screen name="Init" component={Init} />
     </Stack.Navigator>
   );
 }
@@ -58,9 +137,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flexGrow: 1,
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  signUpTextLogin: {
+    flexGrow: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    flexDirection: 'row',
+  },
+  signUpText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  signUpButton: {
+    color: '#006ea8',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 3,
+  }
 });
