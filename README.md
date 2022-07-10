@@ -17,6 +17,9 @@ _git clone_
 
 ## Ejecutando proyecto ⚙️
 
+_npm install_
+_npm install --global expo-cli_
+_expo install firebase_
 _expo start_
 
 ## Construido con 🛠️
