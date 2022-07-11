@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 
 //import firebase from '../../../database/firebase';
-import { signup1, logout1, login, useAuth } from '../../../database/firebase';
+import { signup1, logout1, login1, useAuth, db, firebase } from '../../../database/firebase';
 
 export default function Signup(props) {
 

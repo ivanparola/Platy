@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 export default function Step5(props) {
+    
+    const [state, setState] = useState({
+        ingreso: '',
+    })
+
+    const handleChangeText = (name, value) => {
+        setState({ ...state, [name]: value })
+    }
 
     return (
         <View style={styles.container}>
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step5/Texto.png')} />
-            <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+            <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('objetivo', value))} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
                 <Text style={styles.buttonText} onPress={() => props.root.navigate('Step6')}>INGRESAR</Text>
             </TouchableOpacity>

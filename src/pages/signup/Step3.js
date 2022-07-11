@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import { doc, setDoc } from "firebase/firestore";
+import { signup1, logout1, login1, useAuth, db} from '../../../database/firebase';
+
 
 export default function Step3(props) {
 
@@ -12,18 +14,43 @@ export default function Step3(props) {
         setState({ ...state, [name]: value })
     }
 
-    // const auth = getAuth();
-    // const user = auth.currentUser;
+   
+    const user = useAuth();
 
     const addIngresos = async () => {
+         if (state.ingreso == "") {
 
-        // await setDoc(doc(db, "transactions"), {
-        //     date: new Date().getDate(),
-        //     mount: ingreso,
-        //     userId: user.uid,
-        //   });
+            alert('There is a blank field');
 
-         await props.root.navigate('Step3');
+        } else {
+
+            handleChangeText("loader", true);
+
+            try {
+                console.log(user.uid);
+                await db.collection("userDetails").add({
+                    createDate: new Date().getDate(),
+                    userId: user.uid,
+                    ingresosMensuales: state.ingreso,
+                    objetivo: 0,
+                }).then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                }).catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+
+                setTimeout(() => {
+                    handleChangeText("loader", false);
+                }, 1000)
+
+                props.root.navigate('Step4');
+
+            } catch (error) {
+               console.log(error);
+                alert(error)
+            }
+
+        }
     }
 
     return (
@@ -31,7 +58,7 @@ export default function Step3(props) {
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step3/Texto.png')} />
             <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('ingreso', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step4')}>INGRESAR</Text>
+                <Text style={styles.buttonText} onPress={() => addIngresos()}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );
