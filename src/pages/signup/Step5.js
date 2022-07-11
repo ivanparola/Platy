@@ -1,13 +1,58 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
+import { signup1, login1, logout1, current1, db, firebase} from '../../../database/firebase';
+
 export default function Step5(props) {
+
+    const [state, setState] = useState({
+        objetivo: '',
+    })
+
+    const handleChangeText = (name, value) => {
+        setState({ ...state, [name]: value })
+    }
+
+   // const auth = getAuth();
+  //  const user = auth.currentUser;
+
+  const user = current1();
+
+    const addObjetivos = async () => {
+
+         if (state.objetivo == "") {
+
+            alert('There is a blank field');
+
+        } else {
+
+            handleChangeText("loader", true);
+
+            try {
+
+                await firebase.db.collection('userDetails').doc(user.uid).update({
+                    objetivo: state.objetivo
+                })
+
+                setTimeout(() => {
+                    handleChangeText("loader", false);
+                }, 1000)
+
+                props.root.navigate('Step6');
+
+            } catch (error) {
+                console.log(error);
+                alert(error)
+            }
+
+        }
+    }
 
     return (
         <View style={styles.container}>
             <Image style={styles.imgText} source={require('../../../assets/img/signup/step5/Texto.png')} />
-            <TextInput style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
+            <TextInput placeholder='$0.00' onChangeText={(value => handleChangeText('objetivo', value))} style={styles.inputLogin} underlineColorAndroid='rgba(0,0,0,0)' placeholderTextColor='#000000' />
             <TouchableOpacity style={styles.buttonLogin}>
-                <Text style={styles.buttonText} onPress={() => props.root.navigate('Step6')}>INGRESAR</Text>
+                <Text style={styles.buttonText} onPress={() =>addObjetivos()}>INGRESAR</Text>
             </TouchableOpacity>
         </View >
     );

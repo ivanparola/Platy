@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 
 //import firebase from '../../../database/firebase';
-import { signup1, logout1, login, useAuth } from '../../../database/firebase';
+import { signup1, login1, logout1, current1, db, firebase} from '../../../database/firebase';
 
 export default function Signup(props) {
 
     const [loading, setLoading] = useState(false);
-    const currentUser = useAuth();
+    const currentUser = current1();
 
     const [state, setState] = useState({
         firstName: '',
