@@ -64,12 +64,13 @@ export default function Step5(props) {
       <TextInput
         placeholder="$0.00"
         onChangeText={(value) => handleChangeText("objetivo", value)}
+        style={styles.inputLogin}
         underlineColorAndroid="rgba(0,0,0,0)"
         placeholderTextColor="#000000"
       />
       <TouchableOpacity style={styles.buttonLogin}>
         <Text style={styles.buttonText} onPress={() => addObjetivos()}>
-          INGRESAR
+          AGREGAR
         </Text>
       </TouchableOpacity>
     </View>

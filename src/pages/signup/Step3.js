@@ -75,7 +75,7 @@ export default function Step3(props) {
       />
       <TouchableOpacity style={styles.buttonLogin}>
         <Text style={styles.buttonText} onPress={() => addIngresos()}>
-          INGRESAR
+          AÑADIR
         </Text>
       </TouchableOpacity>
     </View>

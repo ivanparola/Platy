@@ -67,16 +67,16 @@ export default function Login(props) {
       />
       <TouchableOpacity style={styles.buttonLogin}>
         <Text style={styles.buttonText} onPress={() => handleLogin()}>
-          Login
+          INGRESA
         </Text>
       </TouchableOpacity>
       <View style={styles.signUpTextLogin}>
-        <Text style={styles.signUpText}>Don't have an account yet?</Text>
+        <Text style={styles.signUpText}>Todavia no tenes una cuenta?</Text>
         <Text
           style={styles.signUpButton}
           onPress={() => props.root.navigate("Signup")}
         >
-          Signup
+          Registrate
         </Text>
       </View>
     </View>

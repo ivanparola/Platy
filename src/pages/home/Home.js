@@ -33,7 +33,7 @@ export default function Home(props) {
               style={styles.buttonText}
               onPress={() => props.root.navigate("Login")}
             >
-              Login
+              INGRESA
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
@@ -41,7 +41,7 @@ export default function Home(props) {
               style={styles.buttonText}
               onPress={() => props.root.navigate("Signup")}
             >
-              Signup
+              REGISTRATE
             </Text>
           </TouchableOpacity>
         </View>

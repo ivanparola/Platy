@@ -25,7 +25,7 @@ export default function Step2(props) {
           style={styles.buttonText}
           onPress={() => props.root.navigate("Step3")}
         >
-          INGRESAR
+          COMENZEMOS
         </Text>
       </TouchableOpacity>
     </View>

@@ -94,28 +94,28 @@ export default function Signup(props) {
         />
 
         <TextInput
-          placeholder="First Name"
+          placeholder="Nombres"
           onChangeText={(value) => handleChangeText("firstName", value)}
           style={styles.inputLogin}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#000000"
         />
         <TextInput
-          placeholder="Last Name"
+          placeholder="Apellidos"
           onChangeText={(value) => handleChangeText("lastName", value)}
           style={styles.inputLogin}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#000000"
         />
         <TextInput
-          placeholder="Email"
+          placeholder="Correo Electronico"
           onChangeText={(value) => handleChangeText("email", value)}
           style={styles.inputLogin}
           underlineColorAndroid="rgba(0,0,0,0)"
           placeholderTextColor="#000000"
         />
         <TextInput
-          placeholder="Password"
+          placeholder="Contraseña"
           onChangeText={(value) => handleChangeText("password", value)}
           style={styles.inputLogin}
           underlineColorAndroid="rgba(0,0,0,0)"
@@ -123,7 +123,7 @@ export default function Signup(props) {
           placeholderTextColor="#000000"
         />
         <TextInput
-          placeholder="Confirm Password"
+          placeholder="Confirme Contraseña"
           onChangeText={(value) => handleChangeText("passwordConfirm", value)}
           style={styles.inputLogin}
           underlineColorAndroid="rgba(0,0,0,0)"
@@ -133,17 +133,17 @@ export default function Signup(props) {
 
         <TouchableOpacity style={styles.buttonLogin}>
           <Text style={styles.buttonText} onPress={() => createNewUser()}>
-            Signup
+            REGISTRATE
           </Text>
         </TouchableOpacity>
 
         <View style={styles.signUpTextLogin}>
-          <Text style={styles.signUpText}>Already have an account?</Text>
+          <Text style={styles.signUpText}>Ya tenes una cuenta?</Text>
           <Text
             style={styles.signUpButton}
             onPress={() => props.root.navigate("Login")}
           >
-            Sign in
+            Ingresa
           </Text>
         </View>
       </View>

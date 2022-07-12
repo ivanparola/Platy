@@ -84,18 +84,22 @@ export default function Init(props) {
     datasets: [
       {
         data: [
-          1000, 6521, 100, 9000, 11030, 25000, 70000, 80000, 80000, 80000,
-          80000, 80000,
+          1, 6.52, 0.1, 9.0, 11.03, 25.0, 70.0, 80.0, 80.0, 80.0, 80.0, 80.0,
         ],
       },
     ],
+  };
+
+  const cerrar = async () => {
+    await logout1;
+    props.root.navigate("Home");
   };
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>
-          Welcome, <Text style={styles.bold}>{user.displayName}</Text>
+          Bienvenid@, <Text style={styles.bold}>{user.displayName}</Text>
         </Text>
 
         <View style={styles.blockImgLogin}>
@@ -104,14 +108,14 @@ export default function Init(props) {
             source={require("../../../assets/img/logo/dribbble-interview.gif")}
           />
         </View>
-        <Text style={styles.textMainValue}>your balance</Text>
+        <Text style={styles.textMainValue}>Tu objetivo</Text>
         <Text style={styles.mainValue}>${state.objetivo1}</Text>
         <TouchableOpacity style={styles.buttonLogin}>
           <Text
             style={styles.buttonText}
             onPress={() => props.root.navigate("Spend")}
           >
-            Agregar transaccion
+            AGREGAR GASTO
           </Text>
         </TouchableOpacity>
         <LineChart
@@ -143,6 +147,11 @@ export default function Init(props) {
             borderRadius: 16,
           }}
         />
+      </View>
+      <View>
+        <Text style={styles.signUpButton} onPress={() => cerrar()}>
+          Cerrar Sesion
+        </Text>
       </View>
     </ScrollView>
   );
@@ -206,5 +215,16 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 6,
+  },
+  signUpTextLogin: {
+    flexGrow: 1,
+    alignItems: "flex-end",
+    justifyContent: "center",
+    paddingVertical: 35,
+    flexDirection: "row",
+  },
+  signUpText: {
+    color: "white",
+    fontSize: 16,
   },
 });
