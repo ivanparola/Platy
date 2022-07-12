@@ -27,6 +27,8 @@ export default function Init(props) {
 
     const user = useAuth();
 
+   // const objetivo = await db.collection("userDetails").doc(user.email).get()
+
    // const q = query(collection(db, "transactions"), where("userId", "==", user.uid));
     //const transactionByUser = getDocs(q);
 
@@ -45,6 +47,7 @@ export default function Init(props) {
             }
         ]
     };
+ 
 
     return (
         <ScrollView>
@@ -57,7 +60,7 @@ export default function Init(props) {
                 <Text style={styles.textMainValue}>your balance</Text>
                 <Text style={styles.mainValue}>${props.objetivo}</Text>
                 <TouchableOpacity style={styles.buttonLogin}>
-                    <Text style={styles.buttonText} onPress={() => addTransaction()}>Agregar transaccion</Text>
+                    <Text style={styles.buttonText} onPress={() => props.root.navigate('Spend')}>Agregar transaccion</Text>
                 </TouchableOpacity>
                 <LineChart
                     data={data}

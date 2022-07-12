@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
     },
     inputLogin: {
-        width: 200,
+        width: 300,
         height: 50,
         backgroundColor: '#fcffff',
         borderRadius: 25,
@@ -96,6 +96,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#000000',
         marginVertical: 10,
+        borderBottomColor: '#006ea8',
+        borderBottomWidth: 1,
+        marginBottom: 50,
     },
 
 });

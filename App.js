@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 // Pages
 import HomeApp from './src/pages/home/Home';
 import LoginApp from './src/pages/login/Login';
@@ -15,6 +16,7 @@ import Step3App from './src/pages/signup/Step3';
 import Step4App from './src/pages/signup/Step4';
 import Step5App from './src/pages/signup/Step5';
 import Step6App from './src/pages/signup/Step6';
+import SpendApp from './src/pages/AddSpend/Spend';
 
 
 function Home({ navigation }) {
@@ -44,14 +46,11 @@ function Signup({ navigation }) {
   );
 }
 
-function Init({ route, navigation }) {
-
-  // const { id, firstName, lastName, email, password, ingreso, objetivo } = route.params.data;
-
+function Init({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
-      <InitApp root={navigation} /*id={id} email={email} firstName={firstName} lastName={lastName} email={email} password={password} ingreso={ingreso} objetivo={objetivo}*/ />
+      <InitApp root={navigation}/>
     </View>
   );
 }
@@ -106,6 +105,15 @@ function Step6({ navigation }) {
   );
 }
 
+function Spend({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor='#006ea8' barStyle="light-content" />
+      <SpendApp root={navigation} />
+    </View>
+  );
+}
+
 const Stack = createStackNavigator();
 
 function MyStack() {
@@ -123,6 +131,7 @@ function MyStack() {
       <Stack.Screen name="Step6" component={Step6} />
 
       <Stack.Screen name="Init" component={Init} />
+      <Stack.Screen name="Spend" component={Spend} />
     </Stack.Navigator>
   );
 }
