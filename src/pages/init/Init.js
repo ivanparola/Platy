@@ -67,14 +67,33 @@ export default function Init(props) {
       console.log("Error getting document:", error);
     });
 
-  //const q = query(collection(db, "transactions"), where("userId", "==", user.uid));
+  const q = db.collection("transactions").where("userId", "=", user.uid);
   //const transactionByUser = getDocs(q);
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
     datasets: [
       {
         data: [
+          Math.random() * 100,
+          Math.random() * 100,
+          Math.random() * 100,
+          Math.random() * 100,
+          Math.random() * 100,
+          Math.random() * 100,
           Math.random() * 100,
           Math.random() * 100,
           Math.random() * 100,
