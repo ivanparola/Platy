@@ -147,8 +147,6 @@ export default function Init(props) {
             borderRadius: 16,
           }}
         />
-      </View>
-      <View>
         <Text style={styles.signUpButton} onPress={() => cerrar()}>
           Cerrar Sesion
         </Text>
@@ -180,17 +178,15 @@ const styles = StyleSheet.create({
   },
   textMainValue: {
     color: "white",
-    left: 0,
-    marginVertical: 20,
+    left: -120,
+    marginVertical: 30,
     fontSize: 21,
-    alignSelf: "flex-start",
   },
   mainValue: {
     color: "white",
     left: -120,
-    marginVertical: 0,
-    fontSize: 70,
-    alignSelf: "flex-start",
+    marginVertical: 30,
+    fontSize: 21,
   },
   buttonLogin: {
     width: 300,
@@ -226,5 +222,11 @@ const styles = StyleSheet.create({
   signUpText: {
     color: "white",
     fontSize: 16,
+  },
+  signUpButton: {
+    color: "#006ea8",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 3,
   },
 });

@@ -58,6 +58,7 @@ export default function Spend(props) {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.textMainValue}>Añade tu gasto</Text>
       <TextInput
         placeholder="Amount"
         onChangeText={(value) => handleChangeText("gasto", value)}
@@ -114,5 +115,12 @@ const styles = StyleSheet.create({
     borderBottomColor: "#006ea8",
     borderBottomWidth: 1,
     marginBottom: 50,
+  },
+  textMainValue: {
+    color: "black",
+    left: 0,
+    marginVertical: 20,
+    fontSize: 21,
+    alignSelf: "flex-start",
   },
 });
