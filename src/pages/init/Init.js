@@ -1,12 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
 import { collection, doc, setDoc, where, orderBy } from "firebase/firestore";
-import "firebase/auth"
-import { initializeApp } from "firebase/app";
-import { auth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-
-
-
+import { signup1, logout1, login1, useAuth, db} from '../../../database/firebase';
 
 import {
     useFonts,
@@ -22,13 +17,7 @@ import {
     StackedBarChart
 } from "react-native-chart-kit";
 
-import firebase from '../../../database/firebase';
-
 export default function Init(props) {
-
-
-    //const user = auth();
-
 
     let [fontsLoaded] = useFonts({
         Pacifico_400Regular
@@ -36,18 +25,7 @@ export default function Init(props) {
 
     const screenWidth = Dimensions.get("window").width;
 
-
-
-    // const auth = getAuth();
-    // const user = auth.currentUser;
-    // if (user !== null) {
-    //     const displayName = user.displayName;
-    //     const email = user.email;
-    //     const photoURL = user.photoURL;
-    //     const emailVerified = user.emailVerified;
-    //     const uid = user.uid;
-    // }
-
+    const user = useAuth();
 
    // const q = query(collection(db, "transactions"), where("userId", "==", user.uid));
     //const transactionByUser = getDocs(q);
@@ -71,7 +49,7 @@ export default function Init(props) {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text style={styles.title}>Welcome, <Text style={styles.bold}>nombre</Text></Text>
+                <Text style={styles.title}>Welcome, <Text style={styles.bold}>{user.displayName}</Text></Text>
 
                 <View style={styles.blockImgLogin}>
                     <Image style={styles.img1Center} source={require('../../../assets/img/logo/dribbble-interview.gif')} />

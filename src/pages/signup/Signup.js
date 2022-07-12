@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
-
-//import firebase from '../../../database/firebase';
 import { signup1, logout1, login1, useAuth, db, firebase } from '../../../database/firebase';
 
 export default function Signup(props) {
@@ -22,17 +20,6 @@ export default function Signup(props) {
         setState({ ...state, [name]: value })
     }
 
-    async function handleSignup() {
-        setLoading(true);
-        try {
-            await signup1(state.email, state.password);
-        } catch (error) {
-            console.log(error)
-            alert(error.message);
-        }
-        setLoading(false);
-    }
-
     async function handleLogout() {
         setLoading(true);
         try {
@@ -50,22 +37,23 @@ export default function Signup(props) {
 
             alert('There is a blank field');
 
+        } else if (state.password != state.passwordConfirm){
+
+            alert('There password do not match');
+
         } else {
 
             handleChangeText("loader", true);
 
             try {
+
                 await signup1(state.email, state.password);
 
+                const user = useAuth();
 
-                // await firebase.db.collection('users').add({
-                //     firstName: state.firstName,
-                //     lastName: state.lastName,
-                //     email: state.email,
-                //     password: state.password,
-                //     ingreso: 0,
-                //     objetivo: 0,
-                // });
+                await user.updateProfile({
+                    displayName: state.firstName + " " + state.lastName,
+                });
 
                 setTimeout(() => {
                     handleChangeText("loader", false);

@@ -27,14 +27,13 @@ export default function Step3(props) {
             handleChangeText("loader", true);
 
             try {
-                console.log(user.uid);
-                await db.collection("userDetails").add({
-                    createDate: new Date().getDate(),
+                await db.collection("userDetails").doc(user.email).set({
+                    createDate: new Date(),
                     userId: user.uid,
                     ingresosMensuales: state.ingreso,
                     objetivo: 0,
                 }).then((docRef) => {
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log("Document written with ID: ", user.email);
                 }).catch((error) => {
                     console.error("Error adding document: ", error);
                 });
