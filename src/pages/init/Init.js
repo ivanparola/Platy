@@ -9,7 +9,6 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import { collection, doc, setDoc, where, orderBy } from "firebase/firestore";
 import {
   signup1,
   logout1,
@@ -67,9 +66,6 @@ export default function Init(props) {
       console.log("Error getting document:", error);
     });
 
-  const q = db.collection("transactions").where("userId", "=", user.uid);
-  //const transactionByUser = getDocs(q);
-
   const data = {
     labels: [
       "Jan",
@@ -88,18 +84,8 @@ export default function Init(props) {
     datasets: [
       {
         data: [
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
-          Math.random() * 100,
+          1000, 6521, 100, 9000, 11030, 25000, 70000, 80000, 80000, 80000,
+          80000, 80000,
         ],
       },
     ],
